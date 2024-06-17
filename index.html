@@ -9,7 +9,7 @@
     <title>TonThong</title>
   </head>
   <body>
-    <input type="checkbox" id="open" />
+    <input type="checkbox" id="open" onchange="HandleOpen(this)" />
     <label class="book" for="open">
       <div class="cover">
         <div class="cover-title">Thong Ton</div>
@@ -21,6 +21,8 @@
       <div class="page"></div>
       <div class="page"></div>
       <div class="page"></div>
+      <div class="page-slide-right"></div>
+      <div class="page-slide-left"></div>
       <div class="intro-page">What's your name</div>
       <div class="info-page">
         <h2>ThongTon</h2>
@@ -29,14 +31,15 @@
     </label>
     <div class="preview">
       <input type="checkbox" id="open-preview" />
-      <button class="previous-btn">Previous</button>
-      <label for="open-preview" class="preview-btn">Preview</label>
-      <button class="next-btn">Next</button>
+      <button class="previous-btn" onclick="SlideToRight()">Previous</button>
+      <label for="open-preview" class="preview-btn">View</label>
+      <button class="next-btn" onclick="SlideToLeft()">Next</button>
     </div>
-    <!-- <div class="page-preview">
+    <div class="page-preview">
       <div class="page-one">asdfsad</div>
       <div class="page-two">asdfsd</div>
-    </div> -->
-    <script type="module" src="./main.js"></script>
+    </div>
+    <label for="open-preview" class="overlay"></label>
+    <script src="./main.js"></script>
   </body>
 </html>
