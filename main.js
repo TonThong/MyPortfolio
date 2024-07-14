@@ -1,6 +1,6 @@
 // Database
-const type = ["produce", "project", "project"];
-const title = ["Myself", "My Projects", "My Projects"];
+const type = ["produce", "project", "project", "externalFeatures"];
+const title = ["Myself", "My Projects", "My Projects", "External Features"];
 const link = [
   null,
   {
@@ -11,6 +11,22 @@ const link = [
     demo: "https://house-clone.vercel.app/",
     source: "https://github.com/TonThong/HouseClone",
   },
+];
+const technologies = [
+  null,
+  "HTML, CSS, Javascript, Slick slider, ...",
+  "HTML, CSS, Javascript, React, React hooks, axios, JSON sever, JWT, ...",
+];
+const features = [
+  null,
+  ["Responsive on Mobile, Tablet,… "],
+  [
+    "Create, delete folder and save, delete projects to the folder ",
+    "Deploy on Vercel",
+    "Pagination",
+    "Login, Logout",
+    "Mock API with JSON Server ",
+  ],
 ];
 const introDescriptions = [null, "Website Course", "T Daily"];
 const images = [
@@ -24,8 +40,18 @@ const description = [
   `The "T Daily" website provides a real estate platform featuring property listings. Users can browse various property options with details like prices, locations, and images.`,
 ];
 const more = {
-  education: ["Ton Duc Thang University 2023-2027"],
-  skills: ["HTML,CSS,JS", "ReactJs, React Hooks, Redux", "Git, GitHub, VsCode"],
+  descriptionMySelf:
+    "I'm a front-end developer seeking internship opportunities to gain valuable experience and advance my future career.",
+  education: [
+    "Ton Duc Thang University 2023-2027",
+    "Infomation Technology - IT",
+    " GPA 8.0/10",
+  ],
+  skills: [
+    "HTML, CSS, Javascript",
+    "ReactJs, React Hook, Redux,…",
+    "Git, Vscode, Github",
+  ],
   contact: {
     phone: "+84774565578",
     email: "tonthong.work@gmail.com",
@@ -37,6 +63,8 @@ const more = {
 // Render
 const introPage = document.querySelector(".intro-page");
 const infoPage = document.querySelector(".info-page");
+const pageOne = document.querySelector(".page-one");
+const pageTwo = document.querySelector(".page-two");
 let index = 0;
 
 function IntroPage(type, title, images, introDescriptions, more) {
@@ -48,6 +76,8 @@ function IntroPage(type, title, images, introDescriptions, more) {
     return `<h3>${title}</h3>
         <img id="projects" src="${images}" />
         <p>${introDescriptions}</p>`;
+  } else if (type == "") {
+    return null;
   }
 }
 
@@ -90,6 +120,84 @@ function InfoPage(type, description, link, more) {
         </div>`;
   }
 }
+
+function PagePreviewOne(type, images) {
+  if (type == "produce") {
+    return `<img src=${images}>`;
+  } else if (type == "project") {
+    return `<img id="projects" src=${images}>`;
+  }
+}
+
+function PagePreviewTwo(
+  type,
+  images,
+  description,
+  technologies,
+  features,
+  more
+) {
+  if (type == "produce") {
+    return `<div class="addendum">
+          <div class="addendum-title">About Myself</div>
+          <div class="addendum-content">
+            ${more.descriptionMySelf}
+          </div>
+        </div>
+        <div class="addendum">
+          <div class="addendum-title">Education</div>
+          <div class="addendum-content">
+            ${more.education.map((info) => `<div>${info}</div>`).join("")}
+          </div>
+        </div>
+        <div class="addendum">
+          <div class="addendum-title">Skills</div>
+          <div class="addendum-content">
+          ${more.skills.map((info) => `<div>${info}</div>`).join("")}
+          </div>
+        </div>
+        <div class="addendum">
+          <div class="addendum-title">English</div>
+          <div class="addendum-content">
+            <div>
+              Read document by english. Communicate fluently with others.
+            </div>
+          </div>
+        </div>`;
+  } else if (type == "project") {
+    return `<div class="project-description">
+          ${description}
+        </div>
+        <div>
+          <div class="project-addendum">
+            <div class= "title">Preview:</div>
+            <a href=${link.demo} target="_blank">
+              Link to Website
+            </a>
+          </div>
+          <div class="project-addendum">
+            <div class= "title">SourceCode:</div>
+            <a href=${link.source} target="_blank">
+              Link to Source
+            </a>
+          </div>
+          <div class="project-addendum">
+            <div class= "title">Features:</div>
+            <div>
+              ${features.map((feature) => `<div>${feature}</div>`).join("")}
+            </div>
+          </div>
+          <div class="project-addendum">
+            <div class= "title">Technologies:</div>
+            <div>
+              ${technologies}
+            </div>
+          </div>
+        </div>
+        `;
+  }
+}
+
 // Animation
 function SlideToRight() {
   if (index == 0) {
@@ -101,13 +209,36 @@ function SlideToRight() {
   slidePage.style.transition = "all 1.5s";
   slidePage.style.transform =
     "rotateX(15deg) translateY(calc(-70% - 10px)) translateX(-100%) rotateY(180deg)";
+
+  index -= 1;
+  console.log(description[index]);
+  pageOne.innerHTML = PagePreviewOne(
+    type[index],
+    images[index],
+    introDescriptions[index]
+  );
+  pageTwo.innerHTML = PagePreviewTwo(
+    type[index],
+    images[index],
+    description[index],
+    technologies[index],
+    features[index],
+    more
+  );
+
   setTimeout(() => {
     slidePage.style.zIndex = "1";
     slidePage.style.transition = "all 0s";
     slidePage.style.transform =
       "rotateX(15deg) translateY(calc(-70% - 10px)) translateX(-100%)";
+    infoPage.innerHTML = InfoPage(
+      type[index],
+      description[index],
+      link[index],
+      more
+    );
   }, 1500);
-  index -= 1;
+
   setTimeout(() => {
     introPage.innerHTML = IntroPage(
       type[index],
@@ -116,18 +247,10 @@ function SlideToRight() {
       introDescriptions[index]
     );
   }, 200);
-  setTimeout(() => {
-    infoPage.innerHTML = InfoPage(
-      type[index],
-      description[index],
-      link[index],
-      more
-    );
-  }, 1500);
 }
 
 function SlideToLeft() {
-  if (index == type.length) {
+  if (index == type.length - 1) {
     return;
   }
 
@@ -136,20 +259,33 @@ function SlideToLeft() {
   slidePage.style.zIndex = "10";
   slidePage.style.transform =
     "rotateX(15deg) translateY(calc(-70% - 10px)) rotateY(-180deg)";
+  index += 1;
   setTimeout(() => {
     slidePage.style.zIndex = "-1";
     slidePage.style.transition = "all 0s";
     slidePage.style.transform = "rotateX(15deg) translateY(calc(-70% - 10px))";
-  }, 1500);
-  index += 1;
-  setTimeout(() => {
     introPage.innerHTML = IntroPage(
       type[index],
       title[index],
       images[index],
       introDescriptions[index]
     );
-  }, 1300);
+  }, 1500);
+
+  pageOne.innerHTML = PagePreviewOne(
+    type[index],
+    images[index],
+    introDescriptions[index]
+  );
+  pageTwo.innerHTML = PagePreviewTwo(
+    type[index],
+    images[index],
+    description[index],
+    technologies[index],
+    features[index],
+    more
+  );
+
   setTimeout(() => {
     infoPage.innerHTML = InfoPage(
       type[index],

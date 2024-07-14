@@ -300,13 +300,54 @@ body {
 }
 
 .page-one {
+  display: flex;
+  justify-content: center;
   padding: 32px 40px;
   width: 50%;
 }
 
+.page-one .name {
+  margin: 0 auto;
+}
+
+.page-one img {
+  margin: auto auto;
+}
+
 .page-two {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   padding: 32px 40px;
   width: 50%;
+}
+
+.project-description {
+  font-size: 1.2rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.project-addendum {
+  margin-bottom: 8px;
+}
+
+.addendum {
+}
+
+.addendum-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.addendum-content div {
+  padding-bottom: 4px;
 }
 
 .overlay {
