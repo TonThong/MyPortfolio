@@ -1,6 +1,6 @@
 // Database
-const type = ["produce", "project", "project", "externalFeatures"];
-const title = ["Myself", "My Projects", "My Projects", "External Features"];
+const type = ["produce", "project", "project"];
+const title = ["Myself", "My Projects", "My Projects"];
 const link = [
   null,
   {
