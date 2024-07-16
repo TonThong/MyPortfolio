@@ -1,0 +1,43 @@
+@media (max-width: 720px) {
+  html {
+    font-size: 6px;
+  }
+
+  .cover,
+  .back-cover {
+    width: 100px;
+    height: 175px;
+    border-radius: 0px 20px 20px 0;
+  }
+
+  .cover {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  .page,
+  .intro-page,
+  .info-page {
+    position: absolute;
+    padding: 16px;
+    width: 90px;
+    height: 140px;
+    border-radius: 0 10px 10px 0;
+    font-size: 1rem;
+  }
+
+  .page-slide-right,
+  .page-slide-left {
+    display: none;
+    position: absolute;
+    width: 80px;
+    height: 140px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 0 10px 10px 0;
+    font-size: 1rem;
+  }
+
+  .page-preview {
+    font-size: 1rem;
+  }
+}
