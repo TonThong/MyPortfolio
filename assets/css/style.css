@@ -62,6 +62,7 @@ body {
 .back-cover {
   z-index: -2;
 }
+
 #open:checked ~ .book .cover {
   transition-duration: 1.3s;
   transform: rotateX(15deg) translateY(-70%) rotateY(-180deg);
@@ -337,9 +338,9 @@ body {
 .project-addendum {
   margin-bottom: 8px;
 }
-
+/* 
 .addendum {
-}
+} */
 
 .addendum-title {
   font-size: 1.2rem;
