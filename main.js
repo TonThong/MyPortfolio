@@ -135,6 +135,7 @@ function PagePreviewTwo(
   description,
   technologies,
   features,
+  link,
   more
 ) {
   if (type == "produce") {
@@ -172,7 +173,7 @@ function PagePreviewTwo(
           <div class="project-addendum">
             <div class= "title">Preview:</div>
             <a href=${link.demo} target="_blank">
-              ${link.demo}
+              Link to Website
             </a>
           </div>
           <div class="project-addendum">
@@ -223,6 +224,7 @@ function SlideToRight() {
     description[index],
     technologies[index],
     features[index],
+    link[index],
     more
   );
 
@@ -283,6 +285,7 @@ function SlideToLeft() {
     description[index],
     technologies[index],
     features[index],
+    link[index],
     more
   );
 
