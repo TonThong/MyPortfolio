@@ -172,7 +172,7 @@ function PagePreviewTwo(
           <div class="project-addendum">
             <div class= "title">Preview:</div>
             <a href=${link.demo} target="_blank">
-              Link to Website
+              ${link.demo}
             </a>
           </div>
           <div class="project-addendum">
